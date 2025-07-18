@@ -74,7 +74,7 @@ class QueryResponse(BaseModel):
 async def read_root():
     return FileResponse('static/index.html')
 
-@app.post("/ask", response_model=QueryResponse)
+@app.post("/chat", response_model=QueryResponse)
 async def ask_question(req: QueryRequest):
     answer, context = rag_chain(req.query)
     return {"answer": answer, "context": context}
