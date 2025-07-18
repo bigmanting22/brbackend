@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Chat Assistant - Real-time</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Username Modal -->
+    <div id="usernameModal" class="modal">
+        <div class="modal-content">
+            <h2>Welcome to RAG Chat</h2>
+            <p>Enter your username to start chatting:</p>
+            <input type="text" id="usernameInput" placeholder="Your username" maxlength="20">
+            <button id="joinChatBtn">Join Chat</button>
+        </div>
+    </div>
+
+    <div class="chat-container" id="chatContainer" style="display: none;">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <h1>🤖 RAG Chat Assistant</h1>
+                <div class="connection-status" id="connectionStatus">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Connecting...</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span id="currentUsername"></span>
+                    <div class="online-users" id="onlineUsers">
+                        <span class="users-count">0 users online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Messages -->
+        <div class="chat-messages" id="chatMessages">
+            <div class="welcome-message">
+                <div class="message-content">
+                    <div class="message-text">
+                        Welcome to the RAG Chat Assistant! I can help you find information from the knowledge base. 
+                        You can also share images and chat with other users in real-time.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Typing Indicator -->
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span>AI is thinking...</span>
+        </div>
+        
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <div class="input-actions">
+                <button id="imageUploadBtn" class="action-btn" title="Upload Image">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                        <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                        <polyline points="21,15 16,10 5,21"></polyline>
+                    </svg>
+                </button>
+                <input type="file" id="imageInput" accept="image/*" style="display: none;">
+            </div>
+            
+            <form id="chatForm" class="chat-form">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="messageInput" 
+                        placeholder="Type your message..." 
+                        autocomplete="off"
+                        maxlength="1000"
+                    >
+                    <div class="char-counter" id="charCounter">0/1000</div>
+                </div>
+                <button type="submit" id="sendButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Image Preview Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content image-modal-content">
+            <span class="close-btn" id="closeImageModal">&times;</span>
+            <img id="modalImage" src="/placeholder.svg" alt="Full size image">
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

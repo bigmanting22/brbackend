@@ -1,7 +1,7 @@
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import SupabaseVectorStore
 from openai import OpenAI
-from supab import get_supabase_client
+from backend.supab import get_supabase_client
 import os
 
 # Set up OpenAI API key from environment
